@@ -1,5 +1,6 @@
 import { createStore } from 'redux';
 import QuestionApp from './QuestionApp';
+import deepFreeze from 'deep-freeze';
 import {
   ANSWER_ACTION
 } from './QuestionApp/actions';
@@ -10,10 +11,10 @@ const should = chai.should();
 describe('QuestionApp', function() {
   describe('answerAction', function() {
     let store = null;
-    let initialState = {
+    let initialState = deepFreeze({
       questions: [],
       answers: []
-    };
+    });
 
     before(function() {
       store = createStore(QuestionApp, initialState);
